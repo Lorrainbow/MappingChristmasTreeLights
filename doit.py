@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 from xmlrpc.client import ServerProxy
 import cv2
 import numpy as np
@@ -95,6 +97,6 @@ base = cam.get_image()
 for i in range(100):
     proxy.light_one(i)
     image = cam.get_image()
-    points = vision.find_light(base, image)
+    points = find_light(base, image)
     print(i, points)
 proxy.clear()
